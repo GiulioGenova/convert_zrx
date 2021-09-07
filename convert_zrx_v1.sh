@@ -31,7 +31,7 @@ echo $filename
 	TSNAME=$(awk  -F'#|;\\*;|\\|\\*\\|' '{print $3}' <<< $(head -n 20 $filename | grep  TSNAME) | grep TSNAME | sed 's/TSNAME//')
 	REXCHANGE=$(awk  -F'#|;\\*;|\\|\\*\\|' '{print $2}' <<< $(head -n 20 $filename | grep  REXCHANGE) | grep REXCHANGE | sed 's/REXCHANGE//')
 	DATEFIRST=$(head -n20 $filename | sed -e '/#/ { N; d; }' | sed  's/\s*$//' | sed 's/ /,/g' | head -n1  | awk -F',' '{print $1;}')
-        DATELAST=$(tail -n1 $filename  | awk -F' ' '{print $1;}')
+  DATELAST=$(tail -n1 $filename  | awk -F' ' '{print $1;}')
 
 	    file=$SNAME"_"$SANR"_"$TSNAME"_"$REXCHANGE"_"$DATEFIRST"_"$DATELAST".csv"
             echo "-------"
