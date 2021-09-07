@@ -4,7 +4,7 @@ Utility to convert .zrx files from the Province of Bozen meteo stations to .csv.
 
 The script will:
 - Split the file. Creating one file for each combination of station-measurement. Saves the resulting files in a folder called splitted_\<filename\>
-- Convert the files. Parsing the header and extracting the following info SNAME SANR TSNAME REXCHANGE REXCHANGE DATEFIRST DATELAST. Creating a file with the previous info in the filename and the data in .csv format. Converted files will be written into a folder named converted_\<filename\>
+- Convert the files. Parsing the header and extracting the following info SNAME SANR REXCHANGE DATEFIRST DATELAST. Creating a file with the previous info in the filename and the data in .csv format. Converted files will be written into a folder named converted_\<filename\>
 
 ## Version
 

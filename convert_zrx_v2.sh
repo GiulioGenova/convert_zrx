@@ -24,20 +24,18 @@ if [ ! -d "$outdir" ]; then
 fi
 
 for filename in  $splitdir/xx*; do
-echo $filename
 
-	SNAME=$(awk  -F'#|   ' '{print $2}' <<< $(head -n 20 $filename | grep  SNAME | sed 's/#//g' | sed 's/*/ /g' | sed 's/|/ /g') | grep SNAME | sed 's/SNAME//')
-	SANR=$(awk  -F'#|   ' '{print $1}' <<< $(head -n 20 $filename | grep  SANR | sed 's/#//g' | sed 's/*/ /g' | sed 's/|/ /g') | grep SANR | sed 's/SANR//')
-	#TSNAME=$(awk  -F'#|   ' '{print $1}' <<< $(head -n 20 $filename | grep  TSNAME | sed 's/#//g' | sed 's/*/ /g' | sed 's/|/ /g') | grep TSNAME | sed 's/TSNAME//')
-	REXCHANGE=$(awk  -F'#|   ' '{print $1}' <<< $(head -n 20 $filename | grep  REXCHANGE | sed 's/#//g' | sed 's/*/ /g' | sed 's/|/ /g') | grep REXCHANGE | sed 's/REXCHANGE//')
+  SNAME=$(head -n 25 $filename | grep '#' | sed 's/#//g' | sed 's/|//g' | sed 's/*/\n/g' | grep SNAME | sed 's/SNAME//g')
+	SANR=$(head -n 25 $filename | grep '#' | sed 's/#//g' | sed 's/|//g' | sed 's/*/\n/g' | grep SANR | sed 's/SANR//g')
+	REXCHANGE=$(head -n 25 $filename | grep '#' | sed 's/#//g' | sed 's/|//g' | sed 's/*/\n/g' | grep REXCHANGE | sed 's/REXCHANGE//g')
 	DATEFIRST=$(head -n20 $filename | sed -e '/#/ { N; d; }' | sed  's/\s*$//' | sed 's/ /,/g' | head -n1  | awk -F',' '{print $1;}')
   DATELAST=$(tail -n1 $filename  | awk -F' ' '{print $1;}')
 
 	    file=$SNAME"_"$SANR"_"$REXCHANGE"_"$DATEFIRST"_"$DATELAST".csv"
             echo "-------"
-            echo "Working on: $file"
+            echo "From file: $filename"
+            echo "Writing to: $file"
 
             cat $filename | sed -e '/#/ { N; d; }' | sed  's/\s*$//' | sed 's/ /,/g' > "$outdir/$file"
 
 done
-
