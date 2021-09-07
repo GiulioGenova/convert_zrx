@@ -1,3 +1,13 @@
+# ------------------------------------------------------------------
+# Author:       Giulio Genova
+# Email:        giuliogenova89@gmail.com
+# Date:         2021-09-07
+# Usage:        bash convert_zrx_v1.sh <filename>
+# Example:      bash convert_zrx_v1.sh test.zrx
+# Description:  Utility to convert .zrx files from the Province of Bozen meteo stations to .csv
+# 
+# ------------------------------------------------------------------
+
 IFS=$'\n'
 splitdir="./splitted_$(basename $1 .zrx)"
 outdir="./converted_$(basename $1 .zrx)"
