@@ -10,7 +10,7 @@ The script will:
 
 **convert_zrx_v1.sh** is target to a specific (old) version of the zrx format
 
-**convert_zrx_v2.sh** is target to a specific (old) version of the zrx format
+**convert_zrx_v2.sh** is target to a specific (new) version of the zrx format
 
 ## Usage
 
